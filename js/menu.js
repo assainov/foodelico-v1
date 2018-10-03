@@ -14,13 +14,13 @@ const DayCtrl = (function() {
     //  Data Structure / State
     const state = {
         days: [
-            {name: 'Sunday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
-            {name: 'Monday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
-            {name: 'Tuesday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
-            {name: 'Wednesday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
-            {name: 'Thursday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
-            {name: 'Friday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
-            {name: 'Saturday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Sunday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Monday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Tuesday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Wednesday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Thursday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Friday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
+            // {name: 'Saturday', soup: 'Lentil', option1: 'Mango', option2: 'Apple', option3: 'Orange', salad: 'Caesar Salad', dessert: 'Cheesecake'},
         ],
         currentDay: null
     }
@@ -49,6 +49,9 @@ const DayCtrl = (function() {
                     state.days[index] = newDay;
                 }
             });
+        },
+        setData : function(days) {
+            state.days = days;
         },
         state : state,
     }
@@ -124,7 +127,7 @@ const UICtrl = (function() {
     }
 })();
 
-const AuthCtrl = (function() {
+const FirebaseCtrl = (function(DayCtrl) {
     //Private variables
     
 
@@ -136,9 +139,23 @@ const AuthCtrl = (function() {
                 password : document.querySelector('#userPassword').value
             }
         },
+        loadNewData : function() {
+            // Get a reference to the database service
+            let daysRef = firebase.database().ref();
+
+            //  Read the data and put it in the days array
+            daysRef.child('days').once('value').then(function(snapshot) {
+                const days = snapshot.val();
+                DayCtrl.setData(days);
+
+                //  Set Monday as a current day
+                DayCtrl.setCurrentDay('Monday');
+
+            });
+        }
 
     }
-})();
+})(DayCtrl);
 
 const AppCtrl = (function(DayCtrl, UICtrl) {
     //Private variables
@@ -192,7 +209,6 @@ const AppCtrl = (function(DayCtrl, UICtrl) {
                 let database = firebase.database().ref();
 
                 database.child('days').set(DayCtrl.state.days);
-                console.log('completed');
             } else {
                 alert('User is not signed in');
             }
@@ -205,7 +221,7 @@ const AppCtrl = (function(DayCtrl, UICtrl) {
     }
 
     const userLogin = function(e) {
-        const login = AuthCtrl.getLoginInputs();
+        const login = FirebaseCtrl.getLoginInputs();
 
         if (login.email !== '' && login.password !== '') {
             firebase.auth(). signInWithEmailAndPassword(login.email, login.password).catch(function(error) {
@@ -223,14 +239,13 @@ const AppCtrl = (function(DayCtrl, UICtrl) {
     //Public variables
     return {
         init : function() {
-            
-
+            //  Load data from the database
+            FirebaseCtrl.loadNewData();
 
             //load all event listeners
             loadEventListeners();
 
-            //  Set Monday as a current day
-            DayCtrl.setCurrentDay('Monday');
+            
 
         }
 
@@ -263,7 +278,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 
   //    Changed the user authentication state change to session
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
   .then(function() {
     // Existing and future Auth states are now persisted in the current
     // session only. Closing the window would clear any existing state even
