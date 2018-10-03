@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="427.594" height="96" viewBox="0 0 427.594 96">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e1e1e1;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="received-message-field.svg" class="cls-1" d="M135,6952H498a20,20,0,0,1,20,20v56a20,20,0,0,1-20,20H135a20,20,0,0,1-20-20v-56A20,20,0,0,1,135,6952Zm-44.6,56.91,25.268,14.59v-29.18Z" transform="translate(-90.406 -6952)"/>
+</svg>

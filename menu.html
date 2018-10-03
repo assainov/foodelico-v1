@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Foodelico Admin Panel</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+    .modal { width: 25% !important ; height: auto !important ; }  /* increase the height and width as you desire */
+    @media (max-width: 1200px) { .modal{ width: 35% !important;}}
+    @media (max-width: 768px) { .modal{ width: 80% !important;}}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Foodelico</a>
+                <ul id="nav-mobile" class="right">
+                    <li class="sign-in-option"><a class="modal-trigger" href="#sign-in-modal">Sign in</a></li>
+                    <li class="user-option" style="display: none"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+      <!-- Modal Structure -->
+    <div id="sign-in-modal" class="modal">
+        <div class="modal-content">
+          <h4>Admin Sign In</h4>
+          <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input id="userEmail" type="email" class="validate">
+                      <label for="userEmail">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                      <input id="userPassword" type="password">
+                      <label for="userPassword">Password</label>
+                    </div>
+                      <a id="sign-in-btn" class="waves-effect waves-light btn right">Sign in</a>
+                  </div>
+                  <div class="sign-alert"></div>
+                </form>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <h4>Set up your menu for this week</h4><br><br>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="day-selector">
+                            <option value="Moday" selected >Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                        <label>Weekday</label>
+                    </div>
+                    
+                    <h5 id="weekday">Monday</h5>
+                    <div class="col s12">
+                        <div class="input-field">
+                            <input id="soup" type="text" class="validate">
+                            <label for="soup">Soup</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="option1" type="text" class="validate">
+                            <label for="option1">Main option 1</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="option2" type="text" class="validate">
+                            <label for="option2">Main option 2</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="option3" type="text" class="validate">
+                            <label for="option3">Main option 3</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="salad" type="text" class="validate">
+                            <label for="salad">Salad</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="dessert" type="text" class="validate">
+                            <label for="dessert">Dessert</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <a class="update-btn waves-effect waves-light btn right  light-blue accent-4" style="margin:0.5em"><i class="material-icons left">arrow_forward
+                        </i>Update Current Day Menu</a>
+                    <a class="load-btn waves-effect waves-light btn right  amber darken-3" style="margin:0.5em"><i class="material-icons left">arrow_downward</i>Load Menu</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyAa0NtZ6V7fp9j3NUf0mT31ub-HE3g5OAE",
+        authDomain: "foodelico-c7153.firebaseapp.com",
+        databaseURL: "https://foodelico-c7153.firebaseio.com",
+        projectId: "foodelico-c7153",
+        storageBucket: "foodelico-c7153.appspot.com",
+        messagingSenderId: "623409877303"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>
