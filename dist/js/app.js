@@ -3,14 +3,14 @@ const Animation = (function() {
     //  Selecting elements
     const logoHeight = document.querySelector('.logotype').offsetHeight;
     const header = document.querySelector('.sticky-header');
-    const logoPosition = document.querySelector('.logotype').getBoundingClientRect().top - logoHeight;
+    const logoPosition = document.querySelector('.logotype').getBoundingClientRect().top + document.documentElement.scrollTop - logoHeight;
 
     //  Listen to scroll and hide the Order Now btn
     window.onscroll = function() {
         currentScroll = window.pageYOffset;
-
+        // console.log(currentScroll);
         if (currentScroll < logoPosition) {
-            header.style.top = 0;
+            header.style.top = '0';
         } else {
             header.style.top = '-300px';
         }

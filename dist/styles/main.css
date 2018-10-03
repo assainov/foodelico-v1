@@ -63,7 +63,7 @@ header {
     left:50%;
     transform: translateX(-50%);
     z-index: 100;
-    transition: top 0.5s;
+    transition: top 0.3s;
 }
 
 @media (min-width: 768px) {
@@ -111,6 +111,12 @@ header {
     left:50%;
     transform: translateX(-50%);
     white-space: nowrap;
+    line-height: 0.5em;
+}
+
+#hero .watch-menu h3 {
+    margin: 1em;
+    line-height: 0;
 }
 
 #about-service {
@@ -220,13 +226,13 @@ header {
 #menu .prev {
     position: absolute;
     top: 13%;
-    left: 25%;
+    left: 20%;
     z-index: 300;
 }
 #menu .next {
     position: absolute;
     top: 13%;
-    right: 25%;
+    right: 20%;
     z-index: 300;
 }
 
@@ -349,7 +355,7 @@ header {
 
 #order {
     background-color: #1d315c;
-    height: 100vh;
+    height: 638px;
     padding-top: 5%;
     padding-bottom: 2em;
     color: #fff;
@@ -402,7 +408,7 @@ header {
 @media (min-width: 768px) {
     #order {
         padding: 1%;
-        height: 70vh;
+        height: 640px;
     }
     #order .talk-bubble.right {
         float:none;
@@ -458,7 +464,7 @@ header {
 #about {
     padding-top: 1em;
     line-height: 1.3em;
-    text-align: left;
+    text-align: center;
 }
 @media (min-width: 992px) {
     .container {
