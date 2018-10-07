@@ -61,8 +61,12 @@ header {
     position: fixed;
     top: 0;
     left:50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     z-index: 100;
+    -webkit-transition: top 0.3s;
+    -o-transition: top 0.3s;
     transition: top 0.3s;
 }
 
@@ -96,7 +100,9 @@ header {
     position: relative;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 @media (min-width: 768px) {
@@ -109,7 +115,9 @@ header {
     position: absolute;
     bottom: 0;
     left:50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
     white-space: nowrap;
     line-height: 0.5em;
 }
@@ -129,7 +137,9 @@ header {
     position: relative;
     margin: 0;
     top: 50vh;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 #about-service h3 {
@@ -168,7 +178,9 @@ header {
     #about-service .about-text {
         width: 50%;
         position: static;
-        transform: none;
+        -webkit-transform: none;
+            -ms-transform: none;
+                transform: none;
         padding-top: 4em;
     }
 
@@ -241,9 +253,15 @@ header {
     text-align: center;
     margin: 2em 0;
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 #menu nav ul li a{
@@ -304,6 +322,8 @@ header {
     background-color: #fff;
     border: 1px solid #000;
     overflow: hidden;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
     transition: all 0.5s;
     visibility: hidden;
 
@@ -342,7 +362,8 @@ header {
 
 @media (min-width: 992px) {
     #menu nav ul {
-        justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
     }
     #menu .info-body {
         visibility: hidden;
@@ -414,14 +435,18 @@ header {
         float:none;
         display:block;
         left:60%;
-        transform:translateX(-50%);
+        -webkit-transform:translateX(-50%);
+            -ms-transform:translateX(-50%);
+                transform:translateX(-50%);
     }
     
     #order .talk-bubble.left {
         float:none;
         display:block;
         left:40%;
-        transform:translateX(-50%);
+        -webkit-transform:translateX(-50%);
+            -ms-transform:translateX(-50%);
+                transform:translateX(-50%);
     }
 }
 
