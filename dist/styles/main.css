@@ -182,7 +182,7 @@ header {
 
 @media (min-width: 992px) {
     #about-service {
-        height: 50vh;
+        height: 60vh;
     }
     #about-service .about-text {
         width: 50%;
@@ -233,7 +233,7 @@ header {
         background-size: contain;
         background-position: center right;
         position: absolute;
-        top: 100vh;
+        top: 105vh;
         height: 50vh;
         right: 30vh;
     }
@@ -445,7 +445,7 @@ header {
 @media (min-width: 768px) {
     #order {
         padding: 1%;
-        height: 640px;
+        height: 770px;
     }
     #order .talk-bubble.right {
         float:none;
