@@ -50,7 +50,7 @@ img, embed {
 .section-heading {
     font-family: GreatVibes;
     font-size: 2.5em;
-    line-height: 0.3em;
+    line-height: 1em;
     color: #a78b6b;
     font-weight: normal;
 }
@@ -386,7 +386,7 @@ header {
 
 #order {
     background-color: #1d315c;
-    height: 638px;
+    height: 800px;
     padding-top: 5%;
     padding-bottom: 2em;
     color: #fff;
@@ -410,6 +410,12 @@ header {
 #order .chat {
     color: #000;
     position: relative;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 #order .chat .talk-bubble {
