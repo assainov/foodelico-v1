@@ -133,21 +133,28 @@ const MenuApp = (function() {
         const menu = document.querySelector('.daily-menu');
         
         days.forEach(function(day, index){
-            menu.firstElementChild.firstElementChild.children[index+1].innerHTML = `
-            <h1 class="weekday">${day.name}</h1>
-            <h5 class="menu-title">Soup</h5>
-            <p class="soup">${day.soup}</p>
-            <h5 class="menu-title">Main Option 1</h5>
-            <p class="option1">${day.option1}</p>
-            <h5 class="menu-title">Main Option 2</h5>
-            <p class="option2">${day.option2}</p>
-            <h5 class="menu-title">Main Option 3</h5>
-            <p class="option3">${day.option3}</p>
-            <h5 class="menu-title">Salat</h5>
-            <p class="salad">${day.salad}</p>
-            <h5 class="menu-title">Nachspeise</h5>
-            <p class="dessert">${day.dessert}</p>
-            `;
+            if (day.name === 'Samstag' || day.name === 'Sonntag') {
+                menu.firstElementChild.firstElementChild.children[index+1].innerHTML = `
+                    <h1 class="weekday">${day.name}</h1>
+                    <p class="soup">Closed</p>
+                    `;
+            } else {
+                menu.firstElementChild.firstElementChild.children[index+1].innerHTML = `
+                <h1 class="weekday">${day.name}</h1>
+                <h5 class="menu-title">Suppe</h5>
+                <p class="soup">${day.soup}</p>
+                <h5 class="menu-title">Menu 1</h5>
+                <p class="option1">${day.option1}</p>
+                <h5 class="menu-title">Menu 2</h5>
+                <p class="option2">${day.option2}</p>
+                <h5 class="menu-title">Menu 3</h5>
+                <p class="option3">${day.option3}</p>
+                <h5 class="menu-title">Salat</h5>
+                <p class="salad">${day.salad}</p>
+                <h5 class="menu-title">Nachspeise</h5>
+                <p class="dessert">${day.dessert}</p>
+                `;
+            }
         });
     }
 

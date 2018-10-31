@@ -157,6 +157,15 @@ header {
     text-align: center;
 }
 
+#about-service h2.focused {
+    background-color:#fff;
+    color: #1d315c;
+    display: inline;
+    font-weight: bold;
+    padding: 3px 20px;
+    text-transform: uppercase;
+}
+
 #about-service .fish {
     position: absolute;
     width: 150px;
@@ -193,6 +202,11 @@ header {
     }
     #about-service h2 {
         font-size: 1.2em;
+    }
+
+    #about-service h2.focused {
+        text-align: left !important;
+        display: block;
     }
 
     #about-service .fish {
@@ -317,22 +331,21 @@ header {
     position: absolute;
     top: -0.8em;
     right:0;
-    width: 0;
-    height: 0;
+    width: 80vw;
+    height: auto;
     background-color: #fff;
     border: 1px solid #000;
     overflow: hidden;
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
-    visibility: hidden;
+    transform: scale(0);
+    transform-origin: top right;
 
 }
 
 #menu .info-body.show-info {
-    visibility: visible;
-    width: 80vw;
-    height: auto;
+    transform: scale(1);
 }
 
 #menu .close-btn {
@@ -366,9 +379,6 @@ header {
             justify-content: space-around;
     }
     #menu .info-body {
-        visibility: hidden;
-    }
-    #menu .info-body.show-info {
         width: 18em;
     }
 
