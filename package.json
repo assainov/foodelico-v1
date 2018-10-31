@@ -11,6 +11,6 @@
   "license": "ISC",
   "homepage": "https://assainov.github.io/foodelico",
   "dependencies": {
-    "gh-pages": "^2.0.0"
+    "gh-pages": "^2.0.1"
   }
 }
