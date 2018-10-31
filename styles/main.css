@@ -164,6 +164,7 @@ header {
     font-weight: bold;
     padding: 3px 20px;
     text-transform: uppercase;
+    z-index: 1000;
 }
 
 #about-service .fish {
